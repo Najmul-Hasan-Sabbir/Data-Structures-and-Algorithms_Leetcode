@@ -1,0 +1,72 @@
+/*
+
+Link: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
+*/
+
+
+
+/*
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+       
+// in this solution i'm using two poiters because its more memory efficient than hash map 
+     int left=0; 
+     int right=numbers.size()-1;
+
+
+     while(left<right){
+
+     
+     int sum=numbers[left]+numbers[right];
+     if(sum==target){
+        return {left+1,right+1};
+     }
+    if(sum<target){
+        left++;
+     } else{
+        right--;
+     }
+
+     }
+return {};
+    }
+};
+
+*/
+
+
+
+
+
+
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+       
+        unordered_map<int, int> hash_table;
+
+       
+        for (int i = 0; i < numbers.size(); i++) {
+            int current_num = numbers[i];
+            int complement = target - current_num;
+
+           // Check if the complement exists in our map
+            if (hash_table.find(complement) != hash_table.end()) {
+                // The problem requires 1-based indexing
+                // hash_table[complement] + 1 is the first index
+                // i + 1 is the current index
+                return {hash_table[complement] + 1, i + 1};
+            }
+
+            // If not found, storing current number and its index
+            hash_table[current_num] = i;
+        }
+
+       
+        return {};
+    }
+};
+
