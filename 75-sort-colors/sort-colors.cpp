@@ -8,7 +8,7 @@ public:
          int end=n-1;
 
          while(mid<=end){
-          
+          // we are checking upto the mid and end pointer where they cross paths 
           if(nums[mid]==0){
             int temp=nums[start];
             nums[start]=nums[mid];
