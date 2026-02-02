@@ -21,39 +21,32 @@ steps:
 */
 
 
+double max_sum=0;
 
-
-int max_sum=0;
-int window_sum=0;
-// getting the first window
+   double curr_sum=0;
 for(int i=0; i<k; i++){
 
- 
- window_sum+=nums[i];
-
+        curr_sum+=nums[i];
 }
-
-max_sum=window_sum;
-
-
-// now we will get the rest of the val for the window one by one
+max_sum=curr_sum;
 
 for(int i=k; i<nums.size(); i++){
 
+    curr_sum=curr_sum-nums[i-k];
+     curr_sum+=nums[i];
 
-window_sum=window_sum-nums[i-k]+nums[i];
+if(curr_sum>max_sum){
 
+    max_sum=curr_sum;
 
-max_sum=max(window_sum, max_sum);
+}
 
 
 }
 
 
+double avg=max_sum/k;
 
-
-
-
-return (double)max_sum / k;
+return avg;
     }
 };
