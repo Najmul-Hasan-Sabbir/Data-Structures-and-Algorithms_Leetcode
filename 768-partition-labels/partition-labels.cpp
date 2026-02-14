@@ -1,5 +1,19 @@
 class Solution {
 public:
+
+
+/*
+My intuitio:
+1. I will make an Map /vector to keep track of all the 26 chars 
+2. Then i will do a check from right to left and store their last occourences in the map 
+3. then i will do a check from left to right and now with every check i will check their last occour val and keep the max val as our end for this partition 
+4. and the end val== i that means our this partition is done , we will move to next partition 
+
+
+
+
+
+*/
     vector<int> partitionLabels(string s) {
         vector<int> last(26, 0);
         
